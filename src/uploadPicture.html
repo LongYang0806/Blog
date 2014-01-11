@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+    <form action="/uploadPictureDeal" enctype="multipart/form-data" method="post">Image Upload:
+        <div><label>Image:</label></div>
+        <div><input type="hidden" name="author", value="author={{author}}"/></div>
+        <div><input type="file" name="img"/></div>
+        <input type="submit" value="Upload">
+    </form>
+  </body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Main Page</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<!-- Bootstrap -->
+    	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="bootstrap/css/blog-home.css" rel="stylesheet">
+  	</head>
+	<body>
+
+		<nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">JasonYang</a>
+            </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                {% if user %}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{user.email()}} <b class="caret"></b></a>
+                {% else %}
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown"> Anonymous <b class="caret"></b></a>
+                {% endif %}
+                        
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{url | safe}}">{{url_linktext}}</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+		<h2>{{ blog.blogName }}</h2>
+		<form class="form-search" action="/createPostDeal?blogId={{ blog.blogId }}" enctype="multipart/form-data" method="post"> New Post
+      <div><label>Title:</label></div>
+			<div><textarea name="title" rows="1" cols="20"></textarea></div>
+      <div><label>Content:</label></div>
+			<div><textarea name="content" rows="20" cols="20"></textarea></div>
+      <div><label>Image:</label></div>
+      <div><input type="file" name="image"/></div>
+			<div>Tags(seperate with ','): <textarea name="tags" rows="1" cols="20"></textarea></div>
+
+			<div><input type="submit" value="Create Post"></div>
+		</form>
+		
+		<a href="/">Home</a>
+
+		<script src="bootstrap/js/jquery-1.10.2.js"></script>
+    	<script src="bootstrap/js/bootstrap.js"></script>
+	</body>
+</html>
